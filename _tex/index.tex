@@ -1,0 +1,1298 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode,linktoc=all}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+    \setmainfont[]{Calibri}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=30mm,left=20mm,heightrounded]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.33,0.33}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.42,0.45,0.49}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.36,0.77}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.01,0.18,0.38}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.42,0.45,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.42,0.45,0.49}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.36,0.77}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.36,0.77}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.42,0.45,0.49}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.33,0.33}{\underline{#1}}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{\textbf{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.36,0.77}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.44,0.26,0.76}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.01,0.18,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.42,0.45,0.49}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.14,0.16,0.18}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.14,0.16,0.18}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.44,0.26,0.76}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.84,0.23,0.29}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.42,0.45,0.49}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.36,0.77}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.01,0.18,0.38}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.01,0.18,0.38}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.89,0.38,0.04}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.01,0.18,0.38}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{1.00,0.33,0.33}{#1}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Analog Inverter Tutorial},
+  pdfauthor={Hrishikesh Pangavhane},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Analog Inverter Tutorial}
+\author{Hrishikesh Pangavhane}
+\date{2026-02-16}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In \ldots{} general \ldots{}
+\end{abstract}
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\section{Introduction}\label{introduction}
+
+This tutorial provides a step-by-step introduction to designing and
+simulating a \textbf{simple analog inverter} using the
+\textbf{open-source tools} hosted on the
+\href{https://github.com/iic-jku/IIC-OSIC-TOOLS}{IIC-OSIC} platform,
+specifically with the
+\href{https://github.com/IHP-GmbH/IHP-Open-PDK}{IHP SG13G2 PDK}. The
+analog inverter, though simple, is a crucial element in analog and
+mixed-signal circuit design, offering valuable insights into device
+behavior, biasing, and small-signal performance. The goal of this
+tutorial is to prrovide a concise overview of the steps needed to create
+and verify simple CMOS circuits and systems.
+
+\section{Full design flow using IIC-OSIC
+tools}\label{full-design-flow-using-iic-osic-tools}
+
+\subsection{Schematic entry using
+Xschem}\label{schematic-entry-using-xschem}
+
+Schematic entry is performed using
+\href{https://xschem.sourceforge.io/stefan/xschem_man/xschem_man.html}{Xschem},
+a powerful open-source schematic editor well-suited for analog and
+mixed-signal circuit design. In this step, the analog inverter circuit
+is constructed by placing and connecting NMOS and PMOS transistors from
+the \textbf{IHP SG13G2 PDK} library. Xschem provides an intuitive
+interface for defining circuit topology, assigning device parameters
+like W/L ratios, and labeling nodes for simulation. Proper hierarchy and
+net labeling ensure compatibility with simulation and layout tools used
+later in the design flow.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start terminal and run IIC-OSIC docker image
+\item
+  To select the PDK, use command \texttt{iic-pdk\ ihp-sg13g} refer
+  Figure~\ref{fig-select-pdk}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_choose_pdk.png}}
+
+}
+
+\caption{\label{fig-select-pdk}Xschem Entry.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Start xschem and create a new schematic. Name it as
+  (Analog\_Inverter.sch)
+\item
+  Using \texttt{Ctrl+i} insert symbol from the sg13g2 library for
+  lv\_nmos and lv\_pmos where lv stands for low-voltage
+\item
+  customize the transistor's dimensions (select the symbol, right click
+  on it and edit its properties) refer Figure~\ref{fig-edit-properties}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_edit_properties.png}}
+
+}
+
+\caption{\label{fig-edit-properties}Xschem Entry.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  Place an input pin \texttt{ipin.sym} and an output pin
+  \texttt{opin.sym} the symbols are available in the library
+  \texttt{\textasciitilde{}/foss/tools/xschem/share/xschem/xschem\_library/devices}
+  label the name of the input and output pins (select the pin, right
+  click on it and edit its properties)
+\item
+  To wire to components, \texttt{Ctrl+w}
+\item
+  Once finished, save the schematic \texttt{Ctrl+Shift+S} See
+  Figure~\ref{fig-xschem-symbol}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/Analog_Inverter_xschem.png}}
+
+}
+
+\caption{\label{fig-xschem-entry}Xschem Entry.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  For creating a symbol,
+  \texttt{Symbol\ -\/-\textgreater{}\ Make\ symbol\ from\ schematic\ \textbar{}\ Ctrl+L}.
+  We can also edit the symbol by opening it in a new tab, see
+  Figure~\ref{fig-xschem-symbol}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/figures/Analog_Inverter_symbol.pdf}}
+
+}
+
+\caption{\label{fig-xschem-symbol}Xschem Symbol.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Now that we have created a symbol, we need to perform DC and Transient
+  analysis using NgSpice.
+\end{enumerate}
+
+\subsection{Simulation using NgSpice}\label{simulation-using-ngspice}
+
+To perform various analysis, we need to create simulation testbenches.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open new tab in xschem \texttt{Ctrl+o}, insert the symbol for inverter
+  (Analog\_Inverter.sym) \texttt{Ctrl+i}. Design a testbench in xschem
+  see Figure~\ref{fig-tb-dc}.
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/figures/_fig_testbench.pdf}}
+
+}
+
+\caption{\label{fig-tb-dc}Xschem Testbench.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The spice directives \textbf{MODELS1} and \textbf{NGSPICE1} are
+  code.sym instances with the attributes shown in
+  Figure~\ref{fig-NgSpice} and Figure~\ref{fig-TT-Models}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_NgSpice.png}}
+
+}
+
+\caption{\label{fig-NgSpice}Xschem Testbench.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_TT_Models.png}}
+
+}
+
+\caption{\label{fig-TT-Models}Xschem TT Corner.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Click the \textbf{Netlist} button to create a netlist which will give
+  us a \texttt{.spice} file and then click on \textbf{Simulate} button
+  to run the simulation.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, titlerule=0mm, arc=.35mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, opacityback=0, toprule=.15mm, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Important}, rightrule=.15mm, left=2mm]
+
+We have used NgSpice interactive mode for the spice simulation see
+Figure~\ref{fig-spice-mode}. We can also find other modes
+\texttt{Simulation\ -\/-\textgreater{}\ Configure\ simulator\ and\ tools}
+
+\end{tcolorbox}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_NgSpice_Mode.png}}
+
+}
+
+\caption{\label{fig-spice-mode}Simulator Mode}
+
+\end{figure}%
+
+\subsection{Output Results}\label{output-results}
+
+Outputs of dc and transient analysis can be seen in
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_tb_dc.png}}
+
+}
+
+\caption{\label{fig-tb-dc1}DC Analysis}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_tb_tran.png}}
+
+}
+
+\caption{\label{fig-tb-tran}Transient Analysis}
+
+\end{figure}%
+
+\subsection{Post processing and simulation using
+python}\label{post-processing-and-simulation-using-python}
+
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/figures/_fig_inverter_transient.pdf}}
+
+}
+
+\caption{Transient Curver}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/figures/_fig_inverter_dc_analysis.pdf}}
+
+}
+
+\caption{DC Charachteristics}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \pandocbounded{\includegraphics[keepaspectratio]{index_files/mediabag/figures/_fig_inverter_vtc.pdf}}
+
+}
+
+\caption{VTC}
+
+\end{figure}%
+
+\subsection{Introduction to Layout}\label{introduction-to-layout}
+
+Layout is the physical representation of an integrated circuit, where
+circuit components such as transistors, interconnects, and vias are
+defined geometrically on various layers corresponding to materials used
+in fabrication. The layout must adhere strictly to design rules provided
+by the semiconductor foundry. We have two tools \textbf{Magic} and
+\textbf{KLayout} which enables layout design and verification. Magic
+being a long-standing tool favored for its tight integration with
+open-source flows, while KLayout offers powerful editing, scripting, and
+visualization capabilities, especially suited for hierarchical designs
+and PDKs such as SG13G2.
+
+\subsubsection{Designing Layout using
+Klayout}\label{designing-layout-using-klayout}
+
+Layout design is performed using
+\href{https://github.com/KLayout/klayout}{KLayout}, an open-source
+layout viewer and editor for GDSII and OASIS files. Inverter layout can
+be built either \textbf{manually from scratch or using parametric cells
+(P\_Cells)} from the IHP SG13G2 PDK, p\_cells simplify device
+instantiation by allowing parameterized generation of transistors and
+other structures. KLayout supports precise layer control, design rule
+checking, and layout-versus-schematic (LVS) compatibility.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start terminal and run IIC-OSIC docker image.
+\item
+  To select the PDK, use command \texttt{iic-pdk\ ihp-sg13g} refer
+  Figure~\ref{fig-select-pdk}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_choose_pdk.png}}
+
+}
+
+\caption{\label{fig-select-pdk}Technology Selection}
+
+\end{figure}%
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, titlerule=0mm, arc=.35mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, opacityback=0, toprule=.15mm, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Important}, rightrule=.15mm, left=2mm]
+
+This step is crucial as it sets the technology IHP-SG13G2 in the tools.
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Start klayout amd refer Figure~\ref{fig-klayout-start}. A new window
+  of Klayout will open after the command.
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_klayout_start.png}}
+
+}
+
+\caption{\label{fig-klayout-start}Klayout Launch.}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  To create new layout, Go to
+  \texttt{Files\ \textgreater{}\textgreater{}\ New\ Layout}. New Layout
+  Properties dialog box will appear, change
+  \texttt{Top\ Cell\ from\ TOP\ to\ inv(inverter)} and leave the rest
+  the same refer Figure~\ref{fig-new-layout}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_setting.png}}
+
+}
+
+\caption{\label{fig-new-layout}New Layout}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Now go to \texttt{Basic\ -\ Basic\ Layout\ Objects} on the left panel.
+  Under \texttt{SG13\_dev\ -\ IHP\ SG13G2\ Pcells}, select an NMOS
+  device and place it in the layout. \texttt{Press\ ESC} to exit
+  placement mode. Repeat the process for the PMOS, placing it directly
+  above the NMOS to follow standard inverter structure.
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_p_cell.png}}
+
+}
+
+\caption{\label{fig-p-cell}Pcells}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  On the right side, the layer list shows all available layers; bold
+  entries indicate layers currently used in the layout. To view all
+  layers from the full cell hierarchy,
+  \texttt{click\ Display\ →\ Full\ Hierarchy\ \textbar{}\ Press\ Shift\ +\ F}.
+\end{enumerate}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, titlerule=0mm, arc=.35mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, opacityback=0, toprule=.15mm, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Tips}, rightrule=.15mm, left=2mm]
+
+To rotate a PCell, go to the
+\texttt{Edit\ tab\ \textgreater{}\textgreater{}\ Move}, select the
+PCell, then right-click. Use the mouse wheel to zoom in and out, and
+press the middle mouse button to pan the layout view.
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  \texttt{Double-click\ on\ the\ PCell} to open its parameter editor.
+  Set parameters like the width and length values to match those used in
+  your \textbf{Xschem schematic}, then \texttt{click\ OK} to apply the
+  changes refer Figure~\ref{fig-pcell-para}
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_pcell_parameters.png}}
+
+}
+
+\caption{\label{fig-pcell-para}Parameters Window}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\item
+  Use the keyboard arrow keys to align the NMOS directly below the PMOS.
+  Connect the \textbf{input} by joining the gates of both transistors
+  using the \texttt{polysilicon\ layer\ -\ GatPoly.drawing}. Connect the
+  \textbf{output} by linking the source and drain of PMOS and NMOS with
+  the \texttt{Metal1\ layer\ -\ Metal1.drawing}. Similarly, use
+  \texttt{Metal1.drawing} to connect the PMOS source to VCC and the NMOS
+  source to VSS. Label all metal connections using the
+  \texttt{Metal1\ pin\ layer\ -\ Metal1.pin}. Refer to the
+  \href{https://ihp-open-pdk-docs.readthedocs.io/en/latest/layout_rules/02_layer_table.html\#layer-table}{IHP
+  Open Source PDK DesignLIB} documentation to verify the correct layer
+  numbers and purposes.
+\item
+  Finally, save your layout by going to \texttt{File\ →\ Save\ As}, and
+  choose the \texttt{GDSII} format to export your design. Your completed
+  CMOS inverter layout should resemble the image shown below.
+\end{enumerate}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{./figures/_fig_inverter.png}}
+
+}
+
+\caption{\label{fig-inv}Final Layout}
+
+\end{figure}%
+
+\href{https://github.com/IHP-GmbH/IHP-Open-PDK/blob/main/ihp-sg13g2/libs.doc/doc/SG13G2_os_layout_rules.pdf}{Here}
+you can find all the layout rules in depth and with illustrations.
+
+\section{Klayout-PEX (KPEX)}\label{klayout-pex-kpex}
+
+While in the schematic, a connection between device terminals is seen as
+an equipotential, the stacked geometries in a specific layout introduce
+parasitic effects, which can be thought of additional resistors,
+capacitors (and inductors), not modeled by and missing in the original
+schematic.
+
+To be able to simulate these effects, a parasitic extraction tool (PEX)
+is used, to extract a netlist from the layout, which represents the
+original schematic (created from the layout active and passive elements)
+augmented with the additional parasitic devices.
+
+\subsection{Why Do We Need PEX?}\label{why-do-we-need-pex}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Reason
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Performance Degradation} & Parasitic capacitance reduces
+bandwidth and phase margin. \\
+\textbf{Offset and Mismatch Effects} & Parasitic coupling causes
+imbalance in differential paths. \\
+\textbf{Stability Impact} & Additional phase lag from parasitics can
+destabilize feedback loops. \\
+\textbf{Post-Layout Verification} & Confirms that layout did not violate
+design intent (gain, UGB, PSRR, etc.). \\
+\textbf{Tapeout Confidence} & Ensures high correlation between
+simulation and silicon behavior. \\
+\end{longtable}
+
+IIC-OSIC-Tools offers
+\href{https://martinjankoehler.github.io/klayout-pex-website/doc/doc.html}{KPEX}
+for this purpose which is a tool, well integrated with Klayout by using
+its API.
+
+\subsection{PEX using Klayout-PEX
+tool}\label{pex-using-klayout-pex-tool}
+
+IIC-OSIC-Tools comes with pre-installed tool called as \textbf{K-pex}.
+The current status of
+\href{https://martinjankoehler.github.io/klayout-pex-website/doc/doc.html\#sec-into-klayout-pex-prototype-status}{KLayout-PEX}
+says as following:
+
+Available KLayout PEX Engines:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1418}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0993}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1773}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5816}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Engine}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{PEX Type}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Status}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Description}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{KPEX/MAGIC} & CC, RC & Usable & Wrapper engine, using installed
+\texttt{magic} tool \\
+\texttt{KPEX/FasterCap} & CC & Usable, \emph{pending QA} & Field solver
+engine using \texttt{FasterCap} \\
+\texttt{KPEX/FastHenry2} & R, L & Planned & Field solver engine using
+\texttt{FastHenry2} \\
+\texttt{KPEX/2.5D} & CC & Under construction & Prototype engine
+implementing MAGIC concepts/formulas with \texttt{KLayout} means \\
+\texttt{KPEX/2.5D} & R, RC & Planned & Prototype engine implementing
+MAGIC concepts/formulas with \texttt{KLayout} means \\
+\end{longtable}
+
+\subsection{\texorpdfstring{Running the \texttt{KPEX/MAGIC}
+Engine}{Running the KPEX/MAGIC Engine}}\label{running-the-kpexmagic-engine}
+
+The magic section of \texttt{kpex\ -\/-help} describes the arguments and
+their defaults. Important arguments:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{-\/-magicrc}: specify location of the \texttt{magicrc} file\\
+\item
+  \texttt{-\/-gds}: path to the GDS input layout\\
+\item
+  \texttt{-\/-magic}: enable magic engine
+\item
+  \texttt{-\/-out\_dir} : set the output directory
+\end{itemize}
+
+\subsubsection{Example Command}\label{example-command}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{kpex} \AttributeTok{{-}{-}pdk}\NormalTok{ ihp\_sg13g2 }\AttributeTok{{-}{-}magic} \AttributeTok{{-}{-}gds}\NormalTok{ GDS\_PATH }\AttributeTok{{-}{-}out\_dir}\NormalTok{ OUTPUT\_DIR\_PATH}
+\end{Highlighting}
+\end{Shaded}
+
+more to kpex can be found under the command \texttt{kpex\ -\/-help}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{/foss/designs} \OperatorTok{\textgreater{}}\NormalTok{ kpex }\AttributeTok{{-}{-}help}
+\ExtensionTok{Usage:}\NormalTok{ kpex }\PreprocessorTok{[{-}{-}}\SpecialStringTok{help}\PreprocessorTok{]} \PreprocessorTok{[{-}{-}}\SpecialStringTok{version}\PreprocessorTok{]}\NormalTok{ [{-}{-}log\_level LOG\_LEVEL]}
+            \ExtensionTok{[{-}{-}threads}\NormalTok{ NUM\_THREADS] }\AttributeTok{{-}{-}pdk} \DataTypeTok{\{ihp\_sg13g2}\OperatorTok{,}\DataTypeTok{sky130A\}}
+            \ExtensionTok{[{-}{-}out\_dir}\NormalTok{ OUTPUT\_DIR\_BASE\_PATH] [{-}{-}gds GDS\_PATH]}
+            \ExtensionTok{[{-}{-}schematic}\NormalTok{ SCHEMATIC\_PATH] [{-}{-}lvsdb LVSDB\_PATH]}
+            \ExtensionTok{[{-}{-}cell}\NormalTok{ CELL\_NAME] [{-}{-}cache{-}lvs CACHE\_LVS]}
+            \ExtensionTok{[{-}{-}cache{-}dir}\NormalTok{ CACHE\_DIR\_PATH] [{-}{-}lvs{-}verbose KLAYOUT\_LVS\_VERBOSE]}
+            \ExtensionTok{[{-}{-}blackbox}\NormalTok{ BLACKBOX\_DEVICES] }\PreprocessorTok{[{-}{-}}\SpecialStringTok{fastercap}\PreprocessorTok{]} \PreprocessorTok{[{-}{-}}\SpecialStringTok{fastcap}\PreprocessorTok{]} \PreprocessorTok{[{-}{-}}\SpecialStringTok{magic}\PreprocessorTok{]}
+            \ExtensionTok{[{-}{-}2.5D]}\NormalTok{ [{-}{-}k\_void K\_VOID] [{-}{-}delaunay\_amax DELAUNAY\_AMAX]}
+            \ExtensionTok{[{-}{-}delaunay\_b}\NormalTok{ DELAUNAY\_B] [{-}{-}geo\_check GEOMETRY\_CHECK]}
+            \ExtensionTok{[{-}{-}diel}\NormalTok{ DIELECTRIC\_FILTER] [{-}{-}tolerance FASTERCAP\_TOLERANCE]}
+            \ExtensionTok{[{-}{-}d\_coeff}\NormalTok{ FASTERCAP\_D\_COEFF]}
+            \ExtensionTok{[{-}{-}mesh}\NormalTok{ FASTERCAP\_MESH\_REFINEMENT\_VALUE]}
+            \ExtensionTok{[{-}{-}ooc}\NormalTok{ FASTERCAP\_OOC\_CONDITION]}
+            \ExtensionTok{[{-}{-}auto\_precond}\NormalTok{ FASTERCAP\_AUTO\_PRECONDITIONER] }\PreprocessorTok{[{-}{-}}\SpecialStringTok{galerkin}\PreprocessorTok{]}
+            \ExtensionTok{[{-}{-}jacobi]}\NormalTok{ [{-}{-}magicrc MAGICRC\_PATH] [{-}{-}magic\_mode }\DataTypeTok{\{CC}\OperatorTok{,}\DataTypeTok{RC}\OperatorTok{,}\DataTypeTok{R\}}\NormalTok{]}
+            \ExtensionTok{[{-}{-}magic\_cthresh}\NormalTok{ MAGIC\_CTHRESH] [{-}{-}magic\_rthresh MAGIC\_RTHRESH]}
+            \ExtensionTok{[{-}{-}magic\_tolerance}\NormalTok{ MAGIC\_TOLERANCE] [{-}{-}magic\_halo MAGIC\_HALO]}
+            \ExtensionTok{[{-}{-}magic\_short} \DataTypeTok{\{none}\OperatorTok{,}\DataTypeTok{resistor}\OperatorTok{,}\DataTypeTok{voltage\}}\NormalTok{]}
+            \ExtensionTok{[{-}{-}magic\_merge} \DataTypeTok{\{none}\OperatorTok{,}\DataTypeTok{conservative}\OperatorTok{,}\DataTypeTok{aggressive\}}\NormalTok{] [{-}{-}mode }\DataTypeTok{\{CC}\OperatorTok{,}\DataTypeTok{RC}\OperatorTok{,}\DataTypeTok{R\}}\NormalTok{]}
+            \ExtensionTok{[{-}{-}halo}\NormalTok{ HALO] [{-}{-}scale SCALE\_RATIO\_TO\_FIT\_HALO]}
+
+\ExtensionTok{kpex:}\NormalTok{ KLayout{-}integrated Parasitic Extraction Tool}
+
+\ExtensionTok{Special}\NormalTok{ Options:}
+  \ExtensionTok{{-}{-}help,} \AttributeTok{{-}h}\NormalTok{            show this help message and exit}
+  \ExtensionTok{{-}{-}version,} \AttributeTok{{-}v}\NormalTok{         show program}\StringTok{\textquotesingle{}s version number and exit}
+\StringTok{  {-}{-}log\_level LOG\_LEVEL}
+\StringTok{                        log\_level ∈ \{\textquotesingle{}}\NormalTok{all}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{debug}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{subprocess}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{verbose}\StringTok{\textquotesingle{},}
+\StringTok{                        \textquotesingle{}}\NormalTok{info}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{warning}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{error}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{critical}\StringTok{\textquotesingle{}\}. Defaults to}
+\StringTok{                        \textquotesingle{}}\NormalTok{subprocess}\StringTok{\textquotesingle{}}
+\StringTok{  {-}{-}threads NUM\_THREADS}
+\StringTok{                        number of threads (e.g. for FasterCap) (default is 48)}
+
+\StringTok{Parasitic Extraction Setup:}
+\StringTok{  {-}{-}pdk \{ihp\_sg13g2,sky130A\}}
+\StringTok{                        pdk ∈ \{\textquotesingle{}}\NormalTok{ihp\_sg13g2}\StringTok{\textquotesingle{}, \textquotesingle{}}\NormalTok{sky130A}\StringTok{\textquotesingle{}\}}
+\StringTok{  {-}{-}out\_dir, {-}o OUTPUT\_DIR\_BASE\_PATH}
+\StringTok{                        Output directory path (default is \textquotesingle{}}\NormalTok{output}\StringTok{\textquotesingle{})}
+
+\StringTok{Parasitic Extraction Input:}
+\StringTok{  Either LVS is run, or an existing LVSDB is used}
+
+\StringTok{  {-}{-}gds, {-}g GDS\_PATH    GDS path (for LVS)}
+\StringTok{  {-}{-}schematic, {-}s SCHEMATIC\_PATH}
+\StringTok{                        Schematic SPICE netlist path (for LVS). If none given,}
+\StringTok{                        a dummy schematic will be created}
+\StringTok{  {-}{-}lvsdb, {-}l LVSDB\_PATH}
+\StringTok{                        KLayout LVSDB path (bypass LVS)}
+\StringTok{  {-}{-}cell, {-}c CELL\_NAME  Cell (default is the top cell)}
+\StringTok{  {-}{-}cache{-}lvs CACHE\_LVS}
+\StringTok{                        Used cached LVSDB (for given input GDS) (default is}
+\StringTok{                        True)}
+\StringTok{  {-}{-}cache{-}dir CACHE\_DIR\_PATH}
+\StringTok{                        Path for cached LVSDB (default is .kpex\_cache within}
+\StringTok{                        {-}{-}out\_dir)}
+\StringTok{  {-}{-}lvs{-}verbose KLAYOUT\_LVS\_VERBOSE}
+\StringTok{                        Verbose KLayout LVS output (default is False)}
+
+\StringTok{Parasitic Extraction Options:}
+\StringTok{  {-}{-}blackbox BLACKBOX\_DEVICES}
+\StringTok{                        Blackbox devices like MIM/MOM caps, as they are}
+\StringTok{                        handled by SPICE models (default is False for testing}
+\StringTok{                        now)}
+\StringTok{  {-}{-}fastercap           Run FasterCap engine (default is False)}
+\StringTok{  {-}{-}fastcap             Run FastCap2 engine (default is False)}
+\StringTok{  {-}{-}magic               Run MAGIC engine (default is False)}
+\StringTok{  {-}{-}2.5D                Run 2.5D analytical engine (default is False)}
+
+\StringTok{Fastercap Options:}
+\StringTok{  {-}{-}k\_void, {-}k K\_VOID   Dielectric constant of void (default is 3.9)}
+\StringTok{  {-}{-}delaunay\_amax, {-}a DELAUNAY\_AMAX}
+\StringTok{                        Delaunay triangulation maximum area (default is 50)}
+\StringTok{  {-}{-}delaunay\_b, {-}b DELAUNAY\_B}
+\StringTok{                        Delaunay triangulation b (default is 0.5)}
+\StringTok{  {-}{-}geo\_check GEOMETRY\_CHECK}
+\StringTok{                        Validate geometries before passing to FasterCap}
+\StringTok{                        (default is False)}
+\StringTok{  {-}{-}diel DIELECTRIC\_FILTER}
+\StringTok{                        Comma separated list of dielectric filter patterns.}
+\StringTok{                        Allowed patterns are: (none, all, {-}dielname1,}
+\StringTok{                        +dielname2) (default is all)}
+\StringTok{  {-}{-}tolerance FASTERCAP\_TOLERANCE}
+\StringTok{                        FasterCap {-}aX error tolerance (default is 0.05)}
+\StringTok{  {-}{-}d\_coeff FASTERCAP\_D\_COEFF}
+\StringTok{                        FasterCap {-}d direct potential interaction coefficient}
+\StringTok{                        to mesh refinement (default is 0.5)}
+\StringTok{  {-}{-}mesh FASTERCAP\_MESH\_REFINEMENT\_VALUE}
+\StringTok{                        FasterCap {-}m Mesh relative refinement value (default}
+\StringTok{                        is 0.5)}
+\StringTok{  {-}{-}ooc FASTERCAP\_OOC\_CONDITION}
+\StringTok{                        FasterCap {-}f out{-}of{-}core free memory to link memory}
+\StringTok{                        condition (0 = don\textquotesingle{}}\NormalTok{t go OOC, default is 2}\ErrorTok{)}
+  \ExtensionTok{{-}{-}auto\_precond}\NormalTok{ FASTERCAP\_AUTO\_PRECONDITIONER}
+                        \ExtensionTok{FasterCap} \AttributeTok{{-}ap}\NormalTok{ Automatic preconditioner usage }\ErrorTok{(}\ExtensionTok{default}
+                        \ExtensionTok{is}\NormalTok{ True}\KeywordTok{)}
+  \ExtensionTok{{-}{-}galerkin}\NormalTok{            FasterCap }\AttributeTok{{-}g}\NormalTok{ Use Galerkin scheme }\ErrorTok{(}\ExtensionTok{default}\NormalTok{ is False}\KeywordTok{)}
+  \ExtensionTok{{-}{-}jacobi}\NormalTok{              FasterCap }\AttributeTok{{-}pj}\NormalTok{ Use Jacobi preconditioner }\ErrorTok{(}\ExtensionTok{default}\NormalTok{ is}
+                        \ExtensionTok{False}\KeywordTok{)}
+
+\ExtensionTok{Magic}\NormalTok{ Options:}
+  \ExtensionTok{{-}{-}magicrc}\NormalTok{ MAGICRC\_PATH}
+                        \ExtensionTok{Path}\NormalTok{ to magicrc configuration file }\ErrorTok{(}\ExtensionTok{default}\NormalTok{ is}
+                        \StringTok{\textquotesingle{}/foss/pdks/ihp{-}sg13g2/libs.tech/magic/ihp{-}sg13g2.magi}
+\StringTok{                        crc\textquotesingle{}}\KeywordTok{)}
+  \ExtensionTok{{-}{-}magic\_mode} \DataTypeTok{\{CC}\OperatorTok{,}\DataTypeTok{RC}\OperatorTok{,}\DataTypeTok{R\}}
+                        \ExtensionTok{magic\_mode}\NormalTok{ ∈ \{}\StringTok{\textquotesingle{}CC\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}RC\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}R\textquotesingle{}}\NormalTok{\}. Defaults to }\StringTok{\textquotesingle{}CC\textquotesingle{}}
+  \ExtensionTok{{-}{-}magic\_cthresh}\NormalTok{ MAGIC\_CTHRESH}
+                        \ExtensionTok{Threshold} \ErrorTok{(in} \ExtensionTok{fF}\KeywordTok{)} \ControlFlowTok{for}\NormalTok{ ignored }\ExtensionTok{parasitic}\NormalTok{ capacitances}
+                        \KeywordTok{(}\ExtensionTok{default}\NormalTok{ is 0.01}\KeywordTok{)}\BuiltInTok{.} \ErrorTok{(}\ExtensionTok{MAGIC}\NormalTok{ command: ext2spice cthresh}
+                        \OperatorTok{\textless{}}\NormalTok{value}\OperatorTok{\textgreater{}}\KeywordTok{)}
+  \ExtensionTok{{-}{-}magic\_rthresh}\NormalTok{ MAGIC\_RTHRESH}
+                        \ExtensionTok{Threshold} \ErrorTok{(in} \ExtensionTok{Ω}\KeywordTok{)} \ControlFlowTok{for}\NormalTok{ ignored }\ExtensionTok{parasitic}\NormalTok{ resistances}
+                        \KeywordTok{(}\ExtensionTok{default}\NormalTok{ is 100}\KeywordTok{)}\BuiltInTok{.} \ErrorTok{(}\ExtensionTok{MAGIC}\NormalTok{ command: ext2spice rthresh}
+                        \OperatorTok{\textless{}}\NormalTok{value}\OperatorTok{\textgreater{}}\KeywordTok{)}
+  \ExtensionTok{{-}{-}magic\_tolerance}\NormalTok{ MAGIC\_TOLERANCE}
+                        \ExtensionTok{Set}\NormalTok{ ratio between resistor and device tolerance}
+                        \KeywordTok{(}\ExtensionTok{default}\NormalTok{ is 1}\KeywordTok{)}\BuiltInTok{.} \ErrorTok{(}\ExtensionTok{MAGIC}\NormalTok{ command: extresist tolerance}
+                        \OperatorTok{\textless{}}\NormalTok{value}\OperatorTok{\textgreater{}}\KeywordTok{)}
+  \ExtensionTok{{-}{-}magic\_halo}\NormalTok{ MAGIC\_HALO}
+                        \ExtensionTok{Custom}\NormalTok{ sidewall halo distance }\ErrorTok{(in} \ExtensionTok{µm}\KeywordTok{)} \KeywordTok{(}\ExtensionTok{MAGIC}\NormalTok{ command:}
+                        \ExtensionTok{extract}\NormalTok{ halo }\OperatorTok{\textless{}}\NormalTok{value}\OperatorTok{\textgreater{}}\KeywordTok{)} \KeywordTok{(}\ExtensionTok{default}\NormalTok{ is no custom halo}\KeywordTok{)}
+  \ExtensionTok{{-}{-}magic\_short} \DataTypeTok{\{none}\OperatorTok{,}\DataTypeTok{resistor}\OperatorTok{,}\DataTypeTok{voltage\}}
+                        \ExtensionTok{magic\_short}\NormalTok{ ∈ \{}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}resistor\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}voltage\textquotesingle{}}\NormalTok{\}.}
+                        \ExtensionTok{Defaults}\NormalTok{ to }\StringTok{\textquotesingle{}none\textquotesingle{}}
+  \ExtensionTok{{-}{-}magic\_merge} \DataTypeTok{\{none}\OperatorTok{,}\DataTypeTok{conservative}\OperatorTok{,}\DataTypeTok{aggressive\}}
+                        \ExtensionTok{magic\_merge}\NormalTok{ ∈ \{}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}conservative\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}aggressive\textquotesingle{}}\NormalTok{\}.}
+                        \ExtensionTok{Defaults}\NormalTok{ to }\StringTok{\textquotesingle{}none\textquotesingle{}}
+
+\ExtensionTok{2.5D}\NormalTok{ Options:}
+  \ExtensionTok{{-}{-}mode} \DataTypeTok{\{CC}\OperatorTok{,}\DataTypeTok{RC}\OperatorTok{,}\DataTypeTok{R\}}\NormalTok{      mode ∈ \{}\StringTok{\textquotesingle{}CC\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}RC\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}R\textquotesingle{}}\NormalTok{\}. Defaults to }\StringTok{\textquotesingle{}CC\textquotesingle{}}
+  \ExtensionTok{{-}{-}halo}\NormalTok{ HALO           Custom sidewall halo distance }\ErrorTok{(in} \ExtensionTok{µm}\KeywordTok{)} \ExtensionTok{to}\NormalTok{ override tech}
+                        \ExtensionTok{info} \ErrorTok{(}\ExtensionTok{default}\NormalTok{ is no custom halo}\KeywordTok{)}
+  \ExtensionTok{{-}{-}scale}\NormalTok{ SCALE\_RATIO\_TO\_FIT\_HALO}
+                        \ExtensionTok{Scale}\NormalTok{ fringe ratios, so that halo distance is 100\%}
+                        \KeywordTok{(}\ExtensionTok{default}\NormalTok{ is True}\KeywordTok{)}
+
+\ExtensionTok{Environmental}\NormalTok{ variables:}
+
+  \ExtensionTok{Variable}\NormalTok{             Description}
+ \ExtensionTok{━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━}
+  \ExtensionTok{KPEX\_FASTCAP\_EXE}\NormalTok{     Path to FastCap2 Executable. Defaults to }\StringTok{\textquotesingle{}fastcap\textquotesingle{}}
+  \ExtensionTok{KPEX\_FASTERCAP\_EXE}\NormalTok{   Path to FasterCap Executable. Defaults to }\StringTok{\textquotesingle{}FasterCap\textquotesingle{}}
+  \ExtensionTok{KPEX\_KLAYOUT\_EXE}\NormalTok{     Path to KLayout Executable. Defaults to }\StringTok{\textquotesingle{}klayout\textquotesingle{}}
+  \ExtensionTok{KPEX\_MAGIC\_EXE}\NormalTok{       Path to MAGIC Executable. Defaults to }\StringTok{\textquotesingle{}magic\textquotesingle{}}
+  \ExtensionTok{PDKPATH}\NormalTok{              Optional }\ErrorTok{(}\ExtensionTok{required}\NormalTok{ for default magicrc}\KeywordTok{)}\ExtensionTok{,}\NormalTok{ e.g.}
+                       \VariableTok{$HOME}\ExtensionTok{/.volare}
+  \ExtensionTok{PDK}\NormalTok{                  Optional }\ErrorTok{(}\ExtensionTok{required}\NormalTok{ for default magicrc}\KeywordTok{)}\ExtensionTok{,} \ErrorTok{(}\ExtensionTok{e.g.}
+                       \ExtensionTok{sky130A}\KeywordTok{)}
+
+\end{Highlighting}
+\end{Shaded}
+
+Once PEX is succesfully done, the extracted netlist SPICE file will be
+generated in the provided output path, which consists of extracted
+parasitics which can be further used to do post layout simulations and
+verify whether the design layout satisfies the design specifications or
+not.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{figures/_fig_pex_outputdir.png}}
+
+}
+
+\caption{\label{fig-output-dir}Extracted Spice file}
+
+\end{figure}%
+
+\subsection{Post layout simulation.}\label{post-layout-simulation.}
+
+We have established testbenches for DC, AC, and transient analysis using
+the symbol of the designed inverter as a subcircuit. The next step is to
+perform post-layout simulation by replacing the schematic netlist with
+the extracted layout netlist (PEX), in order to verify whether the
+performance remains consistent after layout parasitics are included.
+
+Firstly we need to open the symbol file in Xschem, edit the properties
+of the symbol See Figure~\ref{fig-primitive}. Change from
+\texttt{subcircuit} to \texttt{primitive}.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{figures/_fig_primitive.png}}
+
+}
+
+\caption{\label{fig-primitive}Primitive}
+
+\end{figure}%
+
+Once changed to primitive, now we can include the \texttt{.spice} file
+from PEX to the testbench. See Figure~\ref{fig-include}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{figures/_fig_include.png}}
+
+}
+
+\caption{\label{fig-include}Include}
+
+\end{figure}%
+
+\subsection{Results}\label{results}
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{figures/_fig_pex_output.png}}
+
+}
+
+\caption{\label{fig-result}Result}
+
+\end{figure}%
+
+Figure~\ref{fig-result} shows that the response is as same as we
+expected from our schematic.
+
+\section{Xschem Commands}\label{sec-xschem-commands}
+
+Useful shortcuts are as follows
+
+\paragraph{Moving around in a
+schematic:}\label{moving-around-in-a-schematic}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Cursor\ keys} to move around
+\item
+  \texttt{Ctrl-e} to go back to parent schematic
+\item
+  \texttt{e} to descend into schematic of selected symbol
+\item
+  \texttt{i} to descend into symbol of selected symbol
+\item
+  \texttt{f} full zoom on schematic
+\item
+  \texttt{Shift-z} to zoom in
+\item
+  \texttt{Ctrl-z} to zoom out
+\end{itemize}
+
+\paragraph{Editing schematics:}\label{editing-schematics}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Del} to delete elements
+\item
+  \texttt{Ins} to insert elements from library
+\item
+  \texttt{Escape} to abort an operation
+\item
+  \texttt{Ctrl-\#} to rename components with duplicate names
+\item
+  \texttt{c} to copy elements
+\item
+  \texttt{Alt-Shift-l} to add wire label
+\item
+  \texttt{Alt-l} to add label pin
+\item
+  \texttt{m} to move selected objects
+\item
+  \texttt{Shift-R} to rotate selected objects
+\item
+  \texttt{Shift-F} to mirror / flip selected objects
+\item
+  \texttt{q} to edit properties
+\item
+  \texttt{Ctrl-s} to save schematic
+\item
+  \texttt{t} to place a text
+\item
+  \texttt{Shift-T} to toggle the \texttt{ignore} flag on an instance
+\item
+  \texttt{u} to undo an operation
+\item
+  \texttt{w} to draw a wire
+\item
+  \texttt{Shift-W} draw wire and snap to close pin or net point
+\item
+  \texttt{\&} to join, break, and collapse wires
+\item
+  \texttt{A} to make symbol from schematic
+\item
+  \texttt{Alt-s} to reload the circuit if changes in a subcircuit were
+  made
+\end{itemize}
+
+\paragraph{Viewing/Simulating
+Schematics}\label{viewingsimulating-schematics}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{5} to only view probes
+\item
+  \texttt{k} to highlight selected net
+\item
+  \texttt{Shift-K} to unhighlight all nets
+\item
+  \texttt{Shift-o} to toggle light/dark color scheme
+\item
+  \texttt{s} to run a simulation
+\item
+  \texttt{a\ \&\ b} to add cursors to an in-circuit simulation graph
+\item
+  \texttt{f} full zoom on y- or x-axis in in-circuit simulation graph
+\end{itemize}
+
+\section{ngspice Commands}\label{sec-ngspice-commands}
+
+Useful shortcuts are as follows:
+
+\subsection{Commands}\label{commands}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ac\ dec\textbar{}lin\ points\ fstart\ fstop} performs a
+  small-signal ac analysis with either linear or decade sweep
+\item
+  \texttt{dc\ sourcename\ vstart\ vstop\ vincr\ {[}src2\ start2\ stop2\ incr2{]}}
+  runs a dc-sweep, optionally across two variables
+\item
+  \texttt{display} shows the available data vectors in the current plot
+\item
+  \texttt{echo} can be used to display text, \texttt{\$variable} or
+  \texttt{\$\&vector}, can be useful for debugging
+\item
+  \texttt{let\ name\ =\ expr} to create a new vector;
+  \texttt{unlet\ vector} deletes a specified vector; access vector data
+  with \texttt{\$\&vec}
+\item
+  \texttt{linearize\ vec} linearizes a vector on an equidistant time
+  scale, do this before an FFT; with \texttt{set\ specwindow=windowtype}
+  a proper windowing function can be set
+\item
+  \texttt{meas} can be used for various evaluations of measurement
+  results (see ngspice manual for details)
+\item
+  \texttt{noise\ v(output\ \textless{}ref\textgreater{})\ src\ (dec\textbar{}lin)\ pts\ fstart\ fstop}
+  runs a small-signal noise analysis
+\item
+  \texttt{op} calculates the operating point, useful for checking bias
+  points and device parameters
+\item
+  \texttt{plot\ expr\ vs\ scale} to plot something
+\item
+  \texttt{print\ expr} to print it, use \texttt{print\ all} to print
+  everything
+\item
+  \texttt{remzerovec} can be useful to remove vectors with zero length,
+  which otherwise cause issues when saving or plotting data
+\item
+  \texttt{rusage} plot information about resource usage like memory
+\item
+  \texttt{save\ all} or \texttt{save\ signal} specifies which data is
+  saved during simulation; this lowers RAM usage during simulation and
+  size of RAW file; do save before the actual simulation statement
+\item
+  \texttt{setplot} show a list of available plots
+\item
+  \texttt{set\ var\ =\ value} to set the value of a variable; use
+  variable with \texttt{\$var}; \texttt{unset\ var} removes a variable
+\item
+  \texttt{set\ enable\_noisy\_r} to enable noise of behavioral
+  resistors; usually, this is a good idea
+\item
+  \texttt{shell\ cmd} to run a shell command
+\item
+  \texttt{show\ :\ param}, like \texttt{show\ :\ gm} shows the \(g_m\)
+  of all devices after running an operating point with \texttt{op}
+\item
+  \texttt{spec} plots a spectrum (i.e.~frequency domain plot)
+\item
+  \texttt{status} shows the saved parameters and nodes
+\item
+  \texttt{tf} runs a transfer function analysis, returning transfer
+  function, input and output resistance
+\item
+  \texttt{tran\ tstep\ tstop\ \textless{}tstart\ \textless{}tmax\textgreater{}\textgreater{}}
+  runs a transient analysis until \texttt{tstop}, reporting results with
+  \texttt{tstep} step size, starting to plot at \texttt{tstart} and
+  performs time steps not larger then \texttt{tmax}
+\item
+  \texttt{wrdata} writes data into a file in a tabular ASCII format;
+  easy to further process
+\item
+  \texttt{write} writes simulation data (the saved nodes) into a RAW
+  file; default is binary, can be changed to ASCII with
+  \texttt{set\ filetype=ascii}; with \texttt{set\ appendwrite} data is
+  added to an existing file
+\end{itemize}
+
+\subsection{Options}\label{options}
+
+Use \texttt{option\ option=val\ option=val} to set various options;
+important ones are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{abstol} sets the absolute current error tolerance (default is
+  1pA)
+\item
+  \texttt{gmin} is the conductance applied at every node for convergence
+  improvement (default is 1e-12); this can be critical for very high
+  impedance circuits
+\item
+  \texttt{klu} sets the KLU matrix solver
+\item
+  \texttt{list} print the summary listing of the input data
+\item
+  \texttt{maxord} sets the numerical order of the integration method
+  (default is 2 for Gear)
+\item
+  \texttt{method} set the numerical integration method to \texttt{gear}
+  or \texttt{trap} (default is \texttt{trap})
+\item
+  \texttt{node} prints the node table
+\item
+  \texttt{opts} prints the option values
+\item
+  \texttt{temp} sets the simulation temperature
+\item
+  \texttt{reltol} set the relative error tolerance (default is 0.001 =
+  0.1\%)
+\item
+  \texttt{savecurrents} saves the terminal currents of all devices
+\item
+  \texttt{sparse} sets the sparse matrix solver, which can run noise
+  analysis, but is slower than \texttt{klu}
+\item
+  \texttt{vntol} sets the absolute voltage error tolerance (default is
+  1µV)
+\item
+  \texttt{warn} enables the printing of the SOA warning messages
+\end{itemize}
+
+\subsection{Convergence Helper}\label{convergence-helper}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{option\ gmin} can be used to increase the conductance applied
+  at every node
+\item
+  \texttt{option\ method=gear} can lead to improved convergence
+\item
+  \texttt{.nodeset} can be used to specify initial node voltage guesses
+\item
+  \texttt{.ic} can be used to set initial conditions
+\end{itemize}
+
+
+
+
+\end{document}
